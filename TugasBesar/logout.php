@@ -1,0 +1,11 @@
+<?php
+
+@include 'koneksi.php';
+
+session_start();
+session_unset();
+session_destroy();
+
+header('location:formLogin.php');
+
+?>
