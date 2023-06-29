@@ -59,6 +59,7 @@
                   <th scope="col"><b>Nama Barang</b></th>
                   <th scope="col"><b>Alamat<b></th>
                   <th scope="col"><b>Tanggal</b></th>
+                  <th scope="col"><b>Status Bayar</b></th>
                   <th scope="col"><b>Action</b></th>
                </tr>  
             <tbody class="table-group-divider">
@@ -66,7 +67,7 @@
             @include 'koneksi.php';
 
             $koneksi = mysqli_connect("localhost", "root", "", "db_penjualan");
-            $query = mysqli_query($koneksi, "SELECT h.id_history, p.id, p.nama, b.id_barang, b.nama_barang, h.alamat, h.waktu_beli FROM history as h
+            $query = mysqli_query($koneksi, "SELECT h.id_history, p.id, p.nama, b.id_barang, b.nama_barang, h.alamat, h.waktu_beli, h.status_bayar FROM history as h
                                              INNER JOIN person p ON h.id = p.id
                                              INNER JOIN barang b ON h.id_barang = b.id_barang");
             $no = 1;
@@ -98,6 +99,11 @@
                   } else {
                      $id_barang = $row['id_barang'];
                   }  
+                  if($row['status_bayar'] == 0){
+                     $status_bayar = "Belum Bayar";
+                  } else {
+                     $status_bayar = "Sudah Bayar";
+                  } 
                   ?>
                   <tr>
                   <td><?php echo $no;?></td>
@@ -108,6 +114,7 @@
                   <td><?php echo $row['nama_barang'];?></td>
                   <td><?php echo $row['alamat'];?></td>
                   <td><?php echo $row['waktu_beli'];?></td>
+                  <td><?php echo $status_bayar;?></td>
 
                   <?php
                   echo "

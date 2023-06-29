@@ -12,6 +12,7 @@
     $id_history = $data['id_history'];
     $alamat = $data['alamat'];
     $waktu_beli = $data['waktu_beli'];
+    $status_bayar = $data['status_bayar'];
 ?>
 
 <!DOCTYPE html>
@@ -78,6 +79,10 @@
             <input type="text" name="alamat" required placeholder="masukkan alamat..." value="<?php echo $alamat?>">
             <input type="datetime-local" name="waktu_beli" required value="<?php echo $waktu_beli?>">
             <input type="hidden" name="id_history" value="<?php echo $id_history; ?>">
+            <select name="status_bayar">
+               <option value="1" <?php echo $status_bayar == '1' ? 'selected="selected"' : '' ?>>Sudah Bayar</option>
+               <option value="0" <?php echo $status_bayar == '0' ? 'selected="selected"' : '' ?>>Belum Bayar</option>
+            </select>
             <input type="submit" name="submit" value="update" class="form-btn">
          </form>
       </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jun 2023 pada 09.17
+-- Waktu pembuatan: 29 Jun 2023 pada 09.43
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -49,7 +49,8 @@ INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga`, `qty`, `gambar`, `id`
 (7, 'Coach Jacket', 150000, 0, 'coach1.jpg', 1),
 (8, 'Parka Jacket', 450000, 0, 'parka1.jpg', 1),
 (10, 'Bomber', 200000, 1, 'bomber.jpg', 1),
-(11, 'Varsity', 300000, 0, 'jaket-varsity-raglan.jpg', 2);
+(11, 'Varsity', 300000, 0, 'jaket-varsity-raglan.jpg', 2),
+(12, 'Jersey Vintage', 250000, 1, 'jersey.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -62,20 +63,21 @@ CREATE TABLE `history` (
   `id` int(11) DEFAULT NULL,
   `id_barang` int(11) DEFAULT NULL,
   `alamat` varchar(50) DEFAULT NULL,
-  `waktu_beli` datetime DEFAULT current_timestamp()
+  `waktu_beli` datetime DEFAULT current_timestamp(),
+  `status_bayar` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `history`
 --
 
-INSERT INTO `history` (`id_history`, `id`, `id_barang`, `alamat`, `waktu_beli`) VALUES
-(2, 1, 1, 'Sidoarjo', '2022-12-06 07:54:40'),
-(7, 1, 2, 'Purwoasri', '2022-12-06 13:00:36'),
-(8, 1, 8, 'Purwositi', '2022-12-07 17:56:00'),
-(10, 1, 4, 'Purwosari', '2022-12-08 10:01:30'),
-(11, 5, 5, 'Purwoasri', '2023-04-13 09:24:46'),
-(12, 5, 11, 'Mojokerto', '2023-06-05 13:49:37');
+INSERT INTO `history` (`id_history`, `id`, `id_barang`, `alamat`, `waktu_beli`, `status_bayar`) VALUES
+(2, 1, 1, 'Sidoarjo', '2023-06-29 07:54:40', 1),
+(7, 1, 2, 'Purwoasri', '2022-12-06 13:00:36', 0),
+(8, 1, 8, 'Purwositi', '2022-12-07 17:56:00', 0),
+(10, 1, 4, 'Purwosari', '2022-12-08 10:01:30', 0),
+(11, 5, 5, 'Purwoasri', '2023-06-29 09:24:46', 1),
+(12, 5, 11, 'Mojokerto', '2023-06-05 13:49:37', 0);
 
 -- --------------------------------------------------------
 
@@ -135,7 +137,7 @@ ALTER TABLE `person`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `history`

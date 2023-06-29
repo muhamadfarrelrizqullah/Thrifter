@@ -47,7 +47,7 @@
 
             $id = $_SESSION['user_id'];
             $koneksi = mysqli_connect("localhost", "root", "", "db_penjualan");
-            $query = mysqli_query($koneksi, "SELECT b.id_barang, b.nama_barang, h.alamat, p.nama, h.waktu_beli FROM history as h
+            $query = mysqli_query($koneksi, "SELECT b.id_barang, b.nama_barang, h.alamat, p.nama, h.waktu_beli, h.status_bayar FROM history as h
                                              INNER JOIN person p ON h.id = p.id
                                              INNER JOIN barang b ON h.id_barang = b.id_barang
                                              WHERE h.id = $id");
@@ -62,12 +62,18 @@
                   } else {
                      $id_barang = $row['id_barang'];
                   }  
+                  if($row['status_bayar'] == 0){
+                     $status_bayar = "Menunggu Pembayaran";
+                  } else {
+                     $status_bayar = "Pembayaran Sukses";
+                  } 
                   ?>
                   <div class="smallcont p-2 m-4 bg-light rounded-5">
                      <div class="container-fluid pt-2 mt-2">
                         <p>Terimakasih <strong><?php echo $row['nama'];?></strong>, anda telah membeli <?php echo $row['nama_barang'];?> dengan nomor id <?php echo $id_barang;?> dan alamat tujuan <?php echo $row['alamat'];?>, Klik <a href="https://wa.me/0895627054918">Link ini</a> untuk proses pembayaran. <br> Apabila user tidak melakukan proses pembayaran dengan jangka waktu 1x24 jam pembelian dibatalkan.<br>
-                        <small class="text-muted"><?php echo $row['waktu_beli'];?></small></p>
-                        
+                        <small class="text-muted"><?php echo $row['waktu_beli'];?></small>
+                        <small class="text-muted ms-4">Status Pembayaran : <?php echo $status_bayar;?></small>
+                        </p>
                      </div>
                   </div>
                   <?php
