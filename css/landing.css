@@ -6,31 +6,16 @@ html, body{
 }
 
 body{
-    background: linear-gradient(45deg, #2b2d42, #8d99ae, #edf2f4, skyblue, deepskyblue);
-    animation: color 12s ease-in-out infinite;
+    background: #8d99ae;
     font-family: 'Poppins', sans-serif;
     color:#2b2d42;
-    overflow-x: hidden;
 }
-
-@keyframes color{
-    0%{
-       background-position: 0 50%;
-    }
-    50%{
-       background-position: 100% 50%;
-    }
-    100%{
-       background-position: 0 50%;
-    }
- }
 
 #bg{
  
     -webkit-clip-path: polygon(0 0, 100% 0, 60% 100%, 0% 100%);
     clip-path: polygon(0 0, 100% 0, 60% 100%, 0% 100%);
     background: #ffffff;
-    
     height: 100%;
     width: 100%;
     position: absolute;
@@ -102,8 +87,24 @@ body{
     padding: 10px;
     border:2px solid #2b2d42;
 }
+
 a {
     text-decoration: none; 
+    color: #2b2d42;
+}
+
+.bt-main {
+    color: white;
+}
+
+#map{
+    grid-area: main;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 #main-content {
@@ -115,9 +116,13 @@ a {
 }
 
 #main-content #big-title h1{
-    
     font-family: 'Poppins', sans-serif;
     font-size: 4em;
+}
+
+#main-content #big-title h2{
+    font-family: 'Poppins', sans-serif;
+    color: white;
 }
 
 #desc{
